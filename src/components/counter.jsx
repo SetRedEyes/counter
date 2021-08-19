@@ -8,8 +8,7 @@ const Counter = () => {
   }
 
   const getBadgeClasses = () => {
-    let classes = `badge m-2 bg-${count === 0 ? 'danger' : 'primary'}`
-    return classes
+    return `badge m-2 bg-${count === 0 ? 'danger' : 'primary'}`
   }
 
   const handleIncrement = () => {
