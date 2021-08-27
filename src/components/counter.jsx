@@ -1,34 +1,28 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-const Counter = () => {
-  const [count, setCount] = useState(0)
-
-  const formCount = () => {
-    return count === 0 ? 'Null' : count
+const Counter = ({ value, id, name, onDelete, onIncrement, onDecrement }) => {
+  const formValue = () => {
+    return value === 0 ? 'Null' : value
   }
 
   const getBadgeClasses = () => {
-    return `badge m-2 bg-${count === 0 ? 'danger' : 'primary'}`
-  }
-
-  const handleIncrement = () => {
-    setCount((count) => count + 1)
-  }
-
-  const handleDecrement = () => {
-    if (count !== 0) setCount((count) => count - 1)
+    return `badge m-2 bg-${value === 0 ? 'danger' : 'primary'}`
   }
 
   return (
-    <>
-      <span className={getBadgeClasses()}>{formCount()}</span>
-      <button onClick={handleIncrement} className='btn btn-secondary btn-sm'>
+    <div>
+      <h4>{name}</h4>
+      <span className={getBadgeClasses()}>{formValue()}</span>
+      <button onClick={() => onIncrement(id)} className='btn btn-secondary btn-sm'>
         Increment
       </button>
-      <button onClick={handleDecrement} className='btn btn-secondary btn-sm'>
+      <button onClick={() => onDecrement(id)} className='btn btn-secondary btn-sm'>
         Decrement
       </button>
-    </>
+      <button className='btn btn-danger btm-sm m-2' onClick={() => onDelete(id)}>
+        Delete
+      </button>
+    </div>
   )
 }
 
